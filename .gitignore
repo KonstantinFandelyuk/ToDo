@@ -20,4 +20,4 @@ yarn-error.log*
 
 # user data
 
-/logs
+yarn.lock
