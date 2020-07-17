@@ -1,19 +1,32 @@
 import React from "react";
-import styled from "styled-components";
+import Button from "./Button";
+import { List, ListLi, OtherFlex } from "./styled";
 
-function ListItem(props) {
-  const arrTest = ["Первый", "Второй", "Третий", "Четвертый", "Пятый"];
+function ListItem({ props, listItem }) {
   let itemsArray = localStorage.getItem("todo") ? JSON.parse(localStorage.getItem("todo")) : [];
-  const List = styled.ul`
-    list-style-type: decimal;
-  `;
-
+  console.log(listItem);
+  const doneTask = (event) => {
+    let atr = event.target;
+    console.log(atr);
+  };
   const inputElement = itemsArray.map((item) => {
     return (
       <>
-        <li>{item}</li>
-        <button>Done Task</button>
-        <button>Del Task</button>
+        <OtherFlex>
+          <ListLi done="false">{item}</ListLi>
+          <Button
+            value="Done Task"
+            onClick={(event) => {
+              doneTask(event);
+            }}
+          />
+          <Button
+            value="Del Task"
+            onClick={(event) => {
+              doneTask(event);
+            }}
+          />
+        </OtherFlex>
       </>
     );
   });

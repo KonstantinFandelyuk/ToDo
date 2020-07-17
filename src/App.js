@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import { Wrap } from "./components/styled";
 import Button from "./components/Button";
 import Import from "./components/Input";
 import ListItem from "./components/ListItem";
@@ -7,25 +7,22 @@ import ListItem from "./components/ListItem";
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [listItem, setListItem] = useState([]);
+  // const [taskDone, setTaskDone] = useState("");
 
   const handlerAddList = () => {
     let itemsArray = localStorage.getItem("todo") ? JSON.parse(localStorage.getItem("todo")) : [];
-
     itemsArray.push(inputValue);
-
     setListItem([...inputValue, ...listItem]);
     localStorage.setItem("todo", JSON.stringify(itemsArray));
-
-    console.log("W");
   };
 
   const handlerInputValue = (event) => {
-    let str = event.target.closest("input").value;
+    let str = event.target.value;
     setInputValue(str);
   };
 
   return (
-    <div className="App">
+    <Wrap className="App">
       <header className="App-header">
         <Import
           onChange={(event) => {
@@ -33,14 +30,15 @@ function App() {
           }}
         />
         <Button
-          name="ADD Task"
+          primary
+          value="ADD Task"
           onClick={(event) => {
             handlerAddList();
           }}
         />
-        <ListItem />
+        <ListItem listItem={listItem} />
       </header>
-    </div>
+    </Wrap>
   );
 }
 

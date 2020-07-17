@@ -1,11 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const InputElement = styled.input`
-  border: 1px solid blue;
-  background: transparent;
-  padding: 5px;
-`;
+import { InputElement } from "./styled";
 
 function Input(props) {
   return (
