@@ -10,7 +10,7 @@ const ButtonElement = styled.button`
 function Button(props) {
   return (
     <>
-      <ButtonElement name={props.name} onClick={props.onClick}></ButtonElement>
+      <ButtonElement onClick={props.onClick}>{props.value}</ButtonElement>
     </>
   );
 }

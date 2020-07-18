@@ -1,14 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-function ListItem(props) {
-  const arrTest = ["Первый", "Второй", "Третий", "Четвертый", "Пятый"];
-  let itemsArray = localStorage.getItem("todo") ? JSON.parse(localStorage.getItem("todo")) : [];
-  const List = styled.ul`
-    list-style-type: decimal;
-  `;
+function ListItem({ props, listItem, setListItem }) {
 
-  const inputElement = itemsArray.map((item) => {
+
+  const newListItem = listItem.map((item) => {
     return (
       <>
         <li>{item}</li>
@@ -20,7 +16,7 @@ function ListItem(props) {
 
   return (
     <>
-      <List>{inputElement}</List>
+      <List>{newListItem}</List>
     </>
   );
 }
