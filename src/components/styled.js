@@ -8,7 +8,7 @@ const ListLi = styled.li`
   color: black;
   font-size: 18px;
   text-align: left;
-  // text-decoration: ${(props) => (props.id ? "line-through" : "none")};
+  text-decoration: ${(props) => (props.id ? "line-through" : "none")};
 `;
 
 const OtherFlex = styled.div`

@@ -12,6 +12,7 @@ const itemTemplate = {
 let id = 0;
 
 function App() {
+  console.log(id);
   const [inputValue, setInputValue] = useState("");
   const [listItem, setListItem] = useState([]);
 
@@ -19,6 +20,7 @@ function App() {
     const newItem = { ...itemTemplate, label: inputValue, id: id++ };
     setListItem([...listItem, newItem]);
     setInputValue("");
+    return newItem.id;
   };
 
   return (
@@ -36,7 +38,7 @@ function App() {
             handlerAddList();
           }}
         />
-        <ListItem listItem={listItem} setListItem={setListItem} />
+        <ListItem listItem={listItem} setListItem={setListItem} id={id} />
       </header>
     </Wrap>
   );
