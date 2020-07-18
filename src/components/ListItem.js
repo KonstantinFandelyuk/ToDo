@@ -1,15 +1,16 @@
 import React from "react";
-import styled from "styled-components";
+import Button from "./Button";
+import { List, ListLi, OtherFlex } from "./styled";
 
 function ListItem({ props, listItem, setListItem }) {
-
-
   const newListItem = listItem.map((item) => {
     return (
       <>
-        <li>{item}</li>
-        <button>Done Task</button>
-        <button>Del Task</button>
+        <OtherFlex key={item.val}>
+          <ListLi id={item.done}>{item.label}</ListLi>
+          <Button value="Done Task" />
+          <Button value="Del Task" />
+        </OtherFlex>
       </>
     );
   });

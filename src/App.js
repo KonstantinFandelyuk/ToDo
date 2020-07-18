@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Wrap } from "./components/styled";
 import Button from "./components/Button";
 import Input from "./components/Input";
 import ListItem from "./components/ListItem";
@@ -21,7 +22,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <Wrap className="App">
       <header className="App-header">
         <Input
           value={inputValue}
@@ -37,7 +38,7 @@ function App() {
         />
         <ListItem listItem={listItem} setListItem={setListItem} />
       </header>
-    </div>
+    </Wrap>
   );
 }
 
