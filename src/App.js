@@ -7,20 +7,19 @@ import ListItem from "./components/ListItem";
 const itemTemplate = {
   label: "",
   done: false,
+  isVisible: true,
 };
 
-let id = 0;
+let indexCounter = 0;
 
 function App() {
-  console.log(id);
   const [inputValue, setInputValue] = useState("");
   const [listItem, setListItem] = useState([]);
 
   const handlerAddList = () => {
-    const newItem = { ...itemTemplate, label: inputValue, id: id++ };
+    const newItem = { ...itemTemplate, label: inputValue, id: indexCounter++ };
     setListItem([...listItem, newItem]);
     setInputValue("");
-    return newItem.id;
   };
 
   return (
@@ -38,8 +37,9 @@ function App() {
             handlerAddList();
           }}
         />
-        <ListItem listItem={listItem} setListItem={setListItem} id={id} />
+        <ListItem listItem={listItem} setListItem={setListItem} indexCounter={indexCounter} />
       </header>
+      <div className="totalTask">Всего задач {listItem.length}</div>
     </Wrap>
   );
 }
