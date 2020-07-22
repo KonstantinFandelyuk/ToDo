@@ -7,12 +7,12 @@ import ListItem from "./components/ListItem";
 const itemTemplate = {
   label: "",
   done: false,
+  isVisibl: true,
 };
 
 let id = 0;
 
 function App() {
-  console.log(id);
   const [inputValue, setInputValue] = useState("");
   const [listItem, setListItem] = useState([]);
 

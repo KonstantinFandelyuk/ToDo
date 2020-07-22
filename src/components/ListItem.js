@@ -7,23 +7,41 @@ function ListItem({ listItem, setListItem }) {
     return (
       <>
         <OtherFlex key={item.val}>
-          <ListLi id={item.done}>{item.label}</ListLi>
+          <ListLi im={item.done} em={item.isVisibl}>
+            {item.label}
+          </ListLi>
           <Button
             value="Done Task"
             onClick={() => {
               doneTask();
             }}
           />
-          <Button value="Del Task" />
+          <Button
+            value="Del Task"
+            onClick={() => {
+              hideTask();
+            }}
+          />
         </OtherFlex>
       </>
     );
   });
 
   const doneTask = () => {
-    const newItems = listItem.map((item, id) => {
-      if (item.id === id) {
+    const newItems = listItem.map((item, index) => {
+      if (item.id === index) {
         item.done = !item.done;
+      }
+      return item;
+    });
+    setListItem(newItems);
+  };
+
+  const hideTask = () => {
+    const newItems = listItem.map((item, index) => {
+      if (item.id === index) {
+        item.isVisibl = !item.isVisibl;
+        console.log(item);
       }
       return item;
     });

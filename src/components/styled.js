@@ -5,10 +5,10 @@ const List = styled.ul`
 `;
 
 const ListLi = styled.li`
-  color: black;
+  display: ${(props) => (props.em ? "block" : "none")};
   font-size: 18px;
   text-align: left;
-  text-decoration: ${(props) => (props.id ? "line-through" : "none")};
+  text-decoration: ${(props) => (props.im ? "line-through" : "none")};
 `;
 
 const OtherFlex = styled.div`
