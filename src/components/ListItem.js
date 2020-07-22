@@ -2,24 +2,25 @@ import React from "react";
 import Button from "./Button";
 import { List, ListLi, OtherFlex } from "./styled";
 
-function ListItem({ listItem, setListItem }) {
+function ListItem({ listItem, setListItem, indexCounter }) {
   const newListItem = listItem.map((item) => {
     return (
       <>
         <OtherFlex key={item.val}>
-          <ListLi im={item.done} em={item.isVisibl}>
+          <ListLi id={item.done} display={item.isVisible}>
             {item.label}
           </ListLi>
           <Button
-            value="Done Task"
-            onClick={() => {
-              doneTask();
+            value={item.done ? "unDone Task" : "Done Task"}
+            onClick={(e) => {
+              doneTask(item.id);
             }}
           />
+
           <Button
-            value="Del Task"
-            onClick={() => {
-              hideTask();
+            value={item.isVisible ? "Удалить" : "Вернуть"}
+            onClick={(e) => {
+              dellTask(item.id);
             }}
           />
         </OtherFlex>
@@ -27,21 +28,20 @@ function ListItem({ listItem, setListItem }) {
     );
   });
 
-  const doneTask = () => {
-    const newItems = listItem.map((item, index) => {
-      if (item.id === index) {
-        item.done = !item.done;
+  const dellTask = (indexCounter) => {
+    const newItems = listItem.map((item) => {
+      if (item.id === indexCounter) {
+        item.isVisible = !item.isVisible;
       }
       return item;
     });
     setListItem(newItems);
   };
 
-  const hideTask = () => {
-    const newItems = listItem.map((item, index) => {
-      if (item.id === index) {
-        item.isVisibl = !item.isVisibl;
-        console.log(item);
+  const doneTask = (indexCounter) => {
+    const newItems = listItem.map((item) => {
+      if (item.id === indexCounter) {
+        item.done = !item.done;
       }
       return item;
     });
