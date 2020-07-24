@@ -8,6 +8,7 @@ const itemTemplate = {
   label: "",
   done: false,
   isVisible: true,
+  forTest: true,
 };
 
 let indexCounter = 0;
